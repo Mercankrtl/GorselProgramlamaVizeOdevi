@@ -333,7 +333,7 @@
             btnTeslimEt.TabIndex = 4;
             btnTeslimEt.Text = "Teslim Et";
             btnTeslimEt.UseVisualStyleBackColor = false;
-            btnTeslimEt.Click += this.btnTeslimEt_Click;
+
             // 
             // btnIptal
             // 

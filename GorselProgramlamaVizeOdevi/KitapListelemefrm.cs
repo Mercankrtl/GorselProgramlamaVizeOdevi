@@ -16,10 +16,38 @@ namespace GorselProgramlamaVizeOdevi
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        public partial class KitapListelemefrm : Form
         {
+            DataTable dtkitaplar;
+            public KitapListelemefrm()
+            {
+                InitializeComponent();
+                dtkitaplar = new DataTable();
+                dtkitaplar.Columns.Add("K.BarkodNo", "KitapAdi", "Yazari", "YayinEvi", "SayfaNo", "Turu", "RafNo",);
 
+                dgvkitaplar.DataSource = dtkitaplar;
+            }
+
+
+            private void btnEkle_Click(object sender, EventArgs e)
+            {
+
+
+                KitapListeleme nesne = new KitapListeleme();
+                nesne.Show();
+
+            }
+
+
+            private void btnIptal_Click(object sender, EventArgs e)
+            {
+
+            }
+
+            private void btnSil_Click(object sender, EventArgs e)
+            {
+
+            }
         }
+
     }
-}

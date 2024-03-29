@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            dgvuyeler = new DataGridView();
             btnIptal = new Button();
             btnUyeEkle = new Button();
             label8 = new Label();
@@ -42,7 +42,6 @@
             txtAd = new TextBox();
             txtSoyad = new TextBox();
             txtYas = new TextBox();
-            comboCinsiyet = new TextBox();
             txtAdres = new TextBox();
             txtTelefon = new TextBox();
             txtEmail = new TextBox();
@@ -50,20 +49,22 @@
             textBox1 = new TextBox();
             txtAraTC = new Label();
             btnSil = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            comboCinsiyet = new ComboBox();
+            btnEkle = new Button();
+            btndosyaekle = new Button();
+            btnyukle = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvuyeler).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvuyeler
             // 
-            dataGridView1.BackgroundColor = Color.Fuchsia;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(322, 131);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(620, 313);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+            dgvuyeler.BackgroundColor = Color.Fuchsia;
+            dgvuyeler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvuyeler.Location = new Point(322, 131);
+            dgvuyeler.Name = "dgvuyeler";
+            dgvuyeler.RowHeadersWidth = 51;
+            dgvuyeler.Size = new Size(620, 313);
+            dgvuyeler.TabIndex = 0;
             // 
             // btnIptal
             // 
@@ -75,12 +76,13 @@
             btnIptal.TabIndex = 49;
             btnIptal.Text = "Iptal";
             btnIptal.UseVisualStyleBackColor = false;
+            btnIptal.Click += btnIptal_Click;
             // 
             // btnUyeEkle
             // 
             btnUyeEkle.BackColor = Color.FromArgb(192, 0, 192);
             btnUyeEkle.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnUyeEkle.Location = new Point(95, 407);
+            btnUyeEkle.Location = new Point(137, 450);
             btnUyeEkle.Name = "btnUyeEkle";
             btnUyeEkle.Size = new Size(98, 37);
             btnUyeEkle.TabIndex = 48;
@@ -191,14 +193,6 @@
             txtYas.Size = new Size(202, 27);
             txtYas.TabIndex = 37;
             // 
-            // comboCinsiyet
-            // 
-            comboCinsiyet.BackColor = Color.Fuchsia;
-            comboCinsiyet.Location = new Point(95, 263);
-            comboCinsiyet.Name = "comboCinsiyet";
-            comboCinsiyet.Size = new Size(202, 27);
-            comboCinsiyet.TabIndex = 36;
-            // 
             // txtAdres
             // 
             txtAdres.BackColor = Color.Fuchsia;
@@ -260,12 +254,57 @@
             btnSil.Text = "Sil";
             btnSil.UseVisualStyleBackColor = false;
             // 
+            // comboCinsiyet
+            // 
+            comboCinsiyet.BackColor = Color.Fuchsia;
+            comboCinsiyet.FormattingEnabled = true;
+            comboCinsiyet.Location = new Point(95, 263);
+            comboCinsiyet.Name = "comboCinsiyet";
+            comboCinsiyet.Size = new Size(202, 28);
+            comboCinsiyet.TabIndex = 53;
+            // 
+            // btnEkle
+            // 
+            btnEkle.BackColor = Color.FromArgb(192, 0, 192);
+            btnEkle.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEkle.Location = new Point(95, 407);
+            btnEkle.Name = "btnEkle";
+            btnEkle.Size = new Size(98, 37);
+            btnEkle.TabIndex = 54;
+            btnEkle.Text = "Ekle";
+            btnEkle.UseVisualStyleBackColor = false;
+            btnEkle.Click += btnEkle_Click;
+            // 
+            // btndosyaekle
+            // 
+            btndosyaekle.Location = new Point(49, 27);
+            btndosyaekle.Name = "btndosyaekle";
+            btndosyaekle.Size = new Size(94, 29);
+            btndosyaekle.TabIndex = 55;
+            btndosyaekle.Text = "kaydet";
+            btndosyaekle.UseVisualStyleBackColor = true;
+            btndosyaekle.Click += btndosyaekle_Click;
+            // 
+            // btnyukle
+            // 
+            btnyukle.Location = new Point(149, 27);
+            btnyukle.Name = "btnyukle";
+            btnyukle.Size = new Size(94, 29);
+            btnyukle.TabIndex = 56;
+            btnyukle.Text = "yukle";
+            btnyukle.UseVisualStyleBackColor = true;
+            btnyukle.Click += btnyukle_Click;
+            // 
             // UyeListelemefrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 192, 255);
             ClientSize = new Size(1035, 532);
+            Controls.Add(btnyukle);
+            Controls.Add(btndosyaekle);
+            Controls.Add(btnEkle);
+            Controls.Add(comboCinsiyet);
             Controls.Add(btnSil);
             Controls.Add(txtAraTC);
             Controls.Add(textBox1);
@@ -282,22 +321,21 @@
             Controls.Add(txtAd);
             Controls.Add(txtSoyad);
             Controls.Add(txtYas);
-            Controls.Add(comboCinsiyet);
             Controls.Add(txtAdres);
             Controls.Add(txtTelefon);
             Controls.Add(txtEmail);
             Controls.Add(txtTC);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvuyeler);
             Name = "UyeListelemefrm";
             Text = "UyeListelemefrm";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvuyeler).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvuyeler;
         private Button btnIptal;
         private Button btnUyeEkle;
         private Label label8;
@@ -311,7 +349,6 @@
         private TextBox txtAd;
         private TextBox txtSoyad;
         private TextBox txtYas;
-        private TextBox comboCinsiyet;
         private TextBox txtAdres;
         private TextBox txtTelefon;
         private TextBox txtEmail;
@@ -319,5 +356,9 @@
         private TextBox textBox1;
         private Label txtAraTC;
         private Button btnSil;
+        private ComboBox comboCinsiyet;
+        private Button btnEkle;
+        private Button btndosyaekle;
+        private Button btnyukle;
     }
 }

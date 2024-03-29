@@ -42,8 +42,8 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            btnEkle = new Button();
+            btnIptal = new Button();
             dataGridView1 = new DataGridView();
             btnSil = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -175,28 +175,27 @@
             label7.TabIndex = 13;
             label7.Text = "Raf No";
             // 
-            // button1
+            // btnEkle
             // 
-            button1.BackColor = Color.FromArgb(192, 0, 192);
-            button1.Font = new Font("Segoe UI Black", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(131, 377);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 14;
-            button1.Text = "Ekle";
-            button1.UseVisualStyleBackColor = false;
+            btnEkle.BackColor = Color.FromArgb(192, 0, 192);
+            btnEkle.Font = new Font("Segoe UI Black", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEkle.Location = new Point(131, 377);
+            btnEkle.Name = "btnEkle";
+            btnEkle.Size = new Size(94, 29);
+            btnEkle.TabIndex = 14;
+            btnEkle.Text = "Ekle";
+            btnEkle.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnIptal
             // 
-            button2.BackColor = Color.FromArgb(192, 0, 192);
-            button2.Font = new Font("Segoe UI Black", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(253, 377);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 15;
-            button2.Text = "Iptal";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            btnIptal.BackColor = Color.FromArgb(192, 0, 192);
+            btnIptal.Font = new Font("Segoe UI Black", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnIptal.Location = new Point(253, 377);
+            btnIptal.Name = "btnIptal";
+            btnIptal.Size = new Size(94, 29);
+            btnIptal.TabIndex = 15;
+            btnIptal.Text = "Iptal";
+            btnIptal.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -227,8 +226,8 @@
             ClientSize = new Size(1113, 490);
             Controls.Add(btnSil);
             Controls.Add(dataGridView1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnIptal);
+            Controls.Add(btnEkle);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -266,8 +265,8 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Button button1;
-        private Button button2;
+        private Button btnEkle;
+        private Button btnIptal;
         private DataGridView dataGridView1;
         private Button btnSil;
     }
