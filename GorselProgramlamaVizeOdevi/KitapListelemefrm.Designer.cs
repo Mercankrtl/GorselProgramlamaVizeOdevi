@@ -185,6 +185,7 @@
             btnEkle.TabIndex = 14;
             btnEkle.Text = "Ekle";
             btnEkle.UseVisualStyleBackColor = false;
+            btnEkle.Click += btnEkle_Click;
             // 
             // btnIptal
             // 

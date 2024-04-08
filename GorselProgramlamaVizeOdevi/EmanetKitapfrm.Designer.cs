@@ -60,8 +60,7 @@
             btnIptal = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             grupUyeBilgi.SuspendLayout();
-            grupKitapBilgi.SuspendLayout();
-            SuspendLayout();
+            grupKitapBilgi.SuspendLayout();           
             // 
             // dataGridView1
             // 

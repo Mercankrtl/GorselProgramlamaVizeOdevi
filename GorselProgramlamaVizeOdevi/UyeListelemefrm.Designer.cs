@@ -258,6 +258,7 @@
             // 
             comboCinsiyet.BackColor = Color.Fuchsia;
             comboCinsiyet.FormattingEnabled = true;
+            comboCinsiyet.Items.AddRange(new object[] { "Kiz", "Erkek" });
             comboCinsiyet.Location = new Point(95, 263);
             comboCinsiyet.Name = "comboCinsiyet";
             comboCinsiyet.Size = new Size(202, 28);

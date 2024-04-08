@@ -8,21 +8,19 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 
 namespace GorselProgramlamaVizeOdevi
 {
     public partial class UyeListelemefrm : Form
     {
-        DataTable dtuyeler;
         public UyeListelemefrm()
         {
             InitializeComponent();
-            dtuyeler = new DataTable();
-            dtuyeler.Columns.Add("TC");
-
-            dgvuyeler.DataSource = dtuyeler;
+            
         }
+        SqlConnection baglanti= new SqlConnection()
 
         private void btnIptal_Click(object sender, EventArgs e)
         {
@@ -32,37 +30,63 @@ namespace GorselProgramlamaVizeOdevi
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
+            SqlConnection baglanti = new SqlConnection("connection_string_here");
 
-        }
+            // Bağlantı açılıyor
+            baglanti.Open();
 
-        private void btndosyaekle_Click(object sender, EventArgs e)
-        {
-            string yazilacak = JsonSerializer.Serialize<List<Uye>>(Uye.UyeList);
+            // SQL komutu oluşturuluyor ve parametreler belirtiliyor
+            SqlCommand komut = new SqlCommand("INSERT INTO uyelisteleme(tc, ad, soyad, yas, cinsiyet, telefon, adres, email) VALUES(@tc, @ad, @soyad, @yas, @cinsiyet, @telefon, @adres, @email)", baglanti);
+            komut.Parameters.AddWithValue("@tc", txtTC.Text);
+            komut.Parameters.AddWithValue("@ad", txtAd.Text);
+            komut.Parameters.AddWithValue("@soyad", txtSoyad.Text);
+            komut.Parameters.AddWithValue("@yas", txtYas.Text);
+            komut.Parameters.AddWithValue("@cinsiyet", txtCinsiyet.Text);
+            komut.Parameters.AddWithValue("@telefon", txtTelefon.Text);
+            komut.Parameters.AddWithValue("@adres", txtAdres.Text);
+            komut.Parameters.AddWithValue("@email", txtEmail.Text);
 
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "JSon Dosyasý|*.json";
-            if (dialog.ShowDialog() == DialogResult.OK)
+            // Komutu veritabanında çalıştırılıyor
+            komut.ExecuteNonQuery();
+
+            // Bağlantı kapatılıyor
+            baglanti.Close();
+
+            // Kullanıcıya bilgi veriliyor
+            MessageBox.Show("Üye kaydı yapıldı");
+
+            // TextBox kontrolleri temizleniyor
+            foreach (Control item in Controls)
             {
-
-                string dosyaYolu = dialog.FileName;
-                File.WriteAllText(dosyaYolu, yazilacak, Encoding.UTF8);
-
-            }
-        }
-
-        private void btnyukle_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "JSon Dosyasý|*.json";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                string data = File.ReadAllText(dialog.FileName);
-                Uye.UyeList = JsonSerializer.Deserialize<List<Uye>>(data);
-                foreach (Uye uye in Uye.UyeList)
+                if (item is TextBox)
                 {
-                    uye.tabloekle(dtuyeler);
+                    item.Text = "";
                 }
             }
         }
+
     }
-}
+
+       
+
+        private void btnyukle_Click(object sender, EventArgs e)
+        {
+        private void btnYukle_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "JSON Dosyası|*.json"; // Yalnızca JSON dosyalarını göster
+            if (dialog.ShowDialog() == DialogResult.OK) // Kullanıcı dosya seçerse
+            {
+                string json = File.ReadAllText(dialog.FileName); // Seçilen dosyanın içeriğini oku
+                List<Uye> uyeListesi = JsonConvert.DeserializeObject<List<Uye>>(json); // JSON'u uygun şekilde deserialize et
+                foreach (Uye uye in uyeListesi) // Her üye için
+                {
+                    // Üye listesini ekrana ekleme veya başka bir işlem yapma
+                    // Örneğin, bir DataGridView kontrolüne ekleyebilirsiniz:
+                    dataGridView1.Rows.Add(uye.Ad, uye.Soyad, uye.Email);
+                }
+                MessageBox.Show("Üye listesi yüklendi.");
+            }
+        }
+
+    }
