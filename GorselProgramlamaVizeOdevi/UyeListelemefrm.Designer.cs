@@ -284,7 +284,6 @@
             btndosyaekle.TabIndex = 55;
             btndosyaekle.Text = "kaydet";
             btndosyaekle.UseVisualStyleBackColor = true;
-            btndosyaekle.Click += btndosyaekle_Click;
             // 
             // btnyukle
             // 
@@ -294,7 +293,6 @@
             btnyukle.TabIndex = 56;
             btnyukle.Text = "yukle";
             btnyukle.UseVisualStyleBackColor = true;
-            btnyukle.Click += btnyukle_Click;
             // 
             // UyeListelemefrm
             // 

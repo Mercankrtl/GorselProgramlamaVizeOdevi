@@ -11,15 +11,7 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
+ 
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -320,7 +312,6 @@
             btnEkle.TabIndex = 3;
             btnEkle.Text = "Ekle";
             btnEkle.UseVisualStyleBackColor = false;
-            btnEkle.Click += btnEkle_Click;
             // 
             // btnTeslimEt
             // 
@@ -347,24 +338,12 @@
             // 
             // EmanetKitapfrm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Fuchsia;
-            ClientSize = new Size(1232, 757);
-            Controls.Add(btnIptal);
-            Controls.Add(btnTeslimEt);
-            Controls.Add(btnEkle);
-            Controls.Add(grupKitapBilgi);
-            Controls.Add(grupUyeBilgi);
-            Controls.Add(dataGridView1);
-            Name = "EmanetKitapfrm";
-            Text = "Emanet Kitap Verme Sayfasi";
+           
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             grupUyeBilgi.ResumeLayout(false);
             grupUyeBilgi.PerformLayout();
             grupKitapBilgi.ResumeLayout(false);
             grupKitapBilgi.PerformLayout();
-            ResumeLayout(false);
         }
 
         #endregion
